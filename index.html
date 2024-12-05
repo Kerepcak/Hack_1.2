@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Kontener na przyciski -->
+  <div id="buttonsContainer">
+    <button id="startButton" class="startButtonStyle">
+      Start
+      <span class="key-hint">Spacja</span>
+    </button>
+    <button id="restartButton" class="startButtonStyle">
+      Restart
+      <span class="key-hint">R</span>
+    </button>
+  </div>
+  <!-- Notatka po prawej stronie nad rombem -->
+  <div id="noteContainer">
+    <div class="noteHeader">UWAGA</div>
+    <p class="noteText">Podczas szybkiego naciskania restart i satrt niezależnie czy przyciskiem na klawiaturze czy myszką na ekranie może pojawiać się błąd powodujący natychmiastowe zakończenie gry. Po naciśnięciu restart zalecane jest odczekanie co najmniej trzech sekund przed ponownym naciśnięciem start.</p>
+  </div>
+  <!-- Aktywna strefa -->
+  <div id="centerBox">
+    <div id="activeZone"></div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

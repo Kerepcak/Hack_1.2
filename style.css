@@ -1,0 +1,273 @@
+/* Styl dla całego ekranu */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(145deg, #06141d, #16202B);
+    font-size: 80%; /* Zmniejszenie wielkości czcionki całej strony */
+}
+
+/* Pseudo-elementy z kwadratami */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 200px;  /* Zmniejszone o 20% */
+    height: 200px; /* Zmniejszone o 20% */
+    background: #00b4d80d;
+    top: 12%;
+    left: 8%;
+    transform: rotate(45deg);
+    z-index: -1;
+    box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.425);
+}
+
+body::after {
+    top: 65%;
+    left: 82%;
+    background: rgba(0, 120, 160, 0.05);
+}
+
+/* Kwadrat z gradientem */
+#centerBox {
+    width: 800px;  /* Zmniejszone o 20% */
+    height: 800px; /* Zmniejszone o 20% */
+    background: radial-gradient(circle, #1A2D38, #12111B);
+    border-radius: 16px; /* Zmniejszone o 20% */
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 1;
+    transition: transform 2s ease;
+}
+
+#centerBox.expand::after {
+    opacity: 1;
+}
+
+/* Styl dla aktywnej strefy */
+#activeZone {
+    position: absolute;
+    bottom: 128px; /* Zmniejszone o 20% */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;    /* Zmniejszone o 20% */
+    height: 64px;  /* Zmniejszone o 20% */
+    background-color: #212935;
+    border-radius: 4px; /* Zmniejszone o 20% */
+}
+
+/* Animacja podświetlenia strefy */
+@keyframes glow {
+    0% {
+        background-color: #0d524a;
+        border: 3.2px solid #757575; /* Zmniejszone o 20% */
+    }
+    100% {
+        background-color: #212935;
+        border: none;
+    }
+}
+
+/* Klasa do podświetlenia strefy */
+.activeZoneGlow {
+    animation: glow 0.3s ease-out;
+}
+
+/* Styl dla spadających kwadracików */
+.fallingBox {
+    position: absolute;
+    width: 36px;    /* Zmniejszone o 20% */
+    height: 36px;   /* Zmniejszone o 20% */
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1.6px solid #45515E; /* Zmniejszone o 20% */
+    color: white;
+    font-size: 24px; /* Zmniejszone o 20% */
+    font-weight: bold;
+    text-align: center;
+    line-height: 32px; /* Zmniejszone o 20% */
+    border-radius: 8px; /* Zmniejszone o 20% */
+    top: -80px; /* Zmniejszone o 20% */
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* Animacja pojawiania się kwadracika */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.gameOverMessage {
+    font-size: 20px; /* Zmniejszone o 20% */
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-shadow: 1.6px 1.6px 8px rgba(0, 0, 0, 0.7);
+}
+
+#countdownBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px; /* Zmniejszone o 20% */
+    background-color: #212935;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+#countdownBarInner {
+    height: 100%;
+    background-color: #00b4d8;
+    width: 0%;
+    transition: width 3s linear;
+}
+
+#restartButton:hover {
+    background-color: #141b1f;
+}
+
+/* Styl przycisku Start */
+#buttonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 24px; /* Zmniejszone o 20% */
+    margin-top: 8px; /* Zmniejszone o 20% */
+}
+
+/* Stylizacja dla liczby naciśniętych kwadratów */
+#collectedText {
+    font-size: 19.2px; /* Zmniejszone o 20% */
+    font-weight: bold;
+    color: #FF5733;
+    margin-top: 400px; /* Zmniejszone o 20% */
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 16px; /* Zmniejszone o 20% */
+}
+
+/* Stylizacja przycisku Start */
+.startButtonStyle {
+    padding: 16px 32px;
+    width: 385px; /* Zmniejszone o 20% */
+    background: radial-gradient(circle, #122029, #13111b);
+    color: #ffffff;
+    border: none;
+    border-radius: 10.4px; /* Zmniejszone o 20% */
+    font-size: 24px; /* Zmniejszone o 20% */
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 24px; /* Zmniejszone o 20% */
+    transition: background-color 0.3s, opacity 0.7s ease-out;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.7);
+}
+  
+/* Stylizacja małych napisów po prawej stronie przycisków */
+.key-hint {
+    position: absolute;
+    right: 120px;   /* Ustawiamy napis po prawej stronie przycisku */
+    top: 50%;     /* Wyśrodkowujemy napis w pionie */
+    transform: translateY(-50%);  /* Przesuwamy napis o 50% wysokości przycisku, aby był wyśrodkowany */
+    font-size: 12px;  /* Mały rozmiar czcionki */
+    color: gray;      /* Szary kolor tekstu */
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.3);
+  }
+
+/* Animacja najechania dla przycisku Start */
+.startButtonStyle:hover {
+    background: radial-gradient(circle, #1d2b36, #1a1b23); /* Inny gradient przy najechaniu */
+    transform: scale(1.03); /* Powiększenie przycisku */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.9); /* Mocniejszy cień */
+}
+
+/* Animacja naciśnięcia dla przycisku Start */
+.startButtonStyle:active {
+    transform: scale(0.98); /* Zmniejszenie przycisku */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6); /* Słabszy cień */
+    background: radial-gradient(circle, #0d1b26, #0d0f16); /* Zmiana koloru tła */
+}
+
+/* Stylizacja przycisku Restart */
+#restartButton {
+    padding: 16px 32px;
+    width: 385px; /* Zmniejszone o 20% */
+    background: radial-gradient(circle, #122029, #13111b);
+    color: #ffffff;
+    border: none;
+    border-radius: 10.4px; /* Zmniejszone o 20% */
+    font-size: 24px; /* Zmniejszone o 20% */
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 24px; /* Zmniejszone o 20% */
+    transition: background-color 0.3s, opacity 0.7s ease-out;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Animacja najechania dla przycisku Restart */
+#restartButton:hover {
+    background: radial-gradient(circle, #1d2b36, #1a1b23); /* Inny gradient przy najechaniu */
+    transform: scale(1.03); /* Powiększenie przycisku */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.9); /* Mocniejszy cień */
+}
+
+/* Animacja naciśnięcia dla przycisku Restart */
+#restartButton:active {
+    transform: scale(0.98); /* Zmniejszenie przycisku */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.6); /* Słabszy cień */
+    background: radial-gradient(circle, #0d1b26, #0d0f16); /* Zmiana koloru tła */
+}
+
+/* Styl, który wyłącza kliknięcie i animację */
+.disable-click {
+    pointer-events: none; /* Wyłącza interakcje z przyciskiem */
+    opacity: 0.5; /* Zmniejsza przezroczystość przycisku, żeby wyglądał na nieaktywny */
+    background-color: #2e3b47; /* Zmiana koloru przycisku, gdy jest wyłączony */
+}
+
+
+/* Ewentualnie, aby przycisk wyglądał na nieaktywny, możesz dodać też zmiany w stylu */
+.disable-click:hover {
+    background-color: #2e3b47; /* Zmiana koloru przycisku, gdy jest wyłączony */
+}
+
+/* Stylizacja kontenera na notatkę */
+#noteContainer {
+    position: fixed; /* Ustawiamy pozycjonowanie na stałe */
+    right: 10px;     /* Odstęp od prawej krawędzi ekranu */
+    top: 20px;       /* Odstęp od górnej krawędzi ekranu */
+    width: 300px;    /* Szerokość kontenera */
+    background-color: rgba(0, 0, 0, 0.342); /* Lekko przezroczyste tło */
+    padding: 10px;
+    border-radius: 5px;  /* Zaokrąglone rogi */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Cień wokół kontenera */
+  }
+  
+  /* Stylizacja nagłówka (UWAGA) */
+  .noteHeader {
+    font-weight: bold;
+    font-size: 20px;
+    color: #c4c4c4;
+    margin-bottom: 5px;
+  }
+  
+  /* Stylizacja tekstu notatki */
+  .noteText {
+    font-size: 16px;
+    color: #a5a5a5;
+  }
+  
+  
